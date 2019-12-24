@@ -1,40 +1,45 @@
-import Vue from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
-import store from './store'
-import axios from 'axios';
+import axios, {
+	AxiosError,
+	AxiosRequestConfig,
+	AxiosResponse,
+} from 'axios';
 import { UNAUTHORIZED } from 'http-status-codes';
+import Vue from 'vue';
+import App from './App.vue';
+import './registerServiceWorker';
+import router from './router';
+import store from './store';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+	router,
+	store,
+	render: h => h(App),
+}).$mount('#app');
 
 axios.interceptors.request.use(
-	config => {
-		config.headers.common['Authorization'] = 'Bearer ' + store.getters.token;
+	(config: AxiosRequestConfig) => {
+		// TODO: get token from store
+		const token = '';
+		config.headers.common['Authorization'] = 'Bearer ' + token;
 		return config;
 	},
-	e => {
+	(e: AxiosError) => {
 		return Promise.reject(e);
-	}
+	},
 );
 
 axios.interceptors.response.use(
-	res => {
+	(res: AxiosResponse) => {
 		return res;
 	},
-	e => {
-		const { status } = e.response;
+	(e: AxiosError) => {
+		const { status } = e.response || ({} as AxiosResponse);
 		if (status === UNAUTHORIZED) {
-
-			//delete token form store
-			//route to login
+			// TODO: delete token form store
+			// TODO: route to login
 		}
 		return Promise.reject(e.response);
-	}
+	},
 );
