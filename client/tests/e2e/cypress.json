@@ -1,9 +1,0 @@
-{
-	"fileServerFolder": "./",
-	"fixturesFolder": "fixtures/",
-	"integrationFolder": "specs/",
-	"pluginsFile": false,
-	"screenshotsFolder": "ss/",
-	"supportFile": false,
-	"video": false
-}
