@@ -1,3 +1,9 @@
 {
-	"eslint.autoFixOnSave": true
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "path-intellisense.absolutePathToWorkspace": true,
+    "path-intellisense.mappings": {
+        "@": "${workspaceRoot}/src",
+    }
 }
