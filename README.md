@@ -1,6 +1,4 @@
-# boxes
-
-Boxes is a catalogging app for organizing your personal belongings. It will help you to quickly and easily keep track of your belongings for what ever events life throws at you. In the event that you ever need to make a insurance claim, your items will be safely recorded with Boxes.
+# description
 
 ## vscode extensions
 
