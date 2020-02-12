@@ -5,14 +5,52 @@
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script lang="ts">
+import Vue from 'vue'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { InventoryGetters, InventoryMutations, InventoryActions } from '../store/modules/inventory/types'
 
-export default {
+export default Vue.extend({
   name: 'home',
-  components: {
-    HelloWorld
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapGetters(Object.values(InventoryGetters))
+  },
+  mounted () {
+    console.log(this[InventoryGetters.inventory])
+    this[InventoryActions.updateInventoryList]()
+  },
+  methods: {
+    ...mapMutations(Object.values(InventoryMutations)),
+    ...mapActions(Object.values(InventoryActions))
   }
-}
-</script>
+
+})
+// // import HelloWorld from '@/components/HelloWorld.vue'
+// // import { InventoryGetters, InventoryMutations, InventoryActions } from '../store/modules/inventory/types'
+// // import { InventoryItem } from '../store/modules/inventory/state'
+// // import Component from 'vue-class-component'
+// // import { Action, Mutation, Getter } from 'vuex-class'
+// // import { home } from '@/common/data-cy'
+
+// // @Component({
+// //   name: 'home',
+// //   components: {}
+// // })
+// // export default class Home extends Vue {
+// //   @Getter(InventoryGetters.inventory) inventory!: InventoryItem
+// //   @Getter(InventoryGetters.inventoryList) inventoryList!: InventoryItem[]
+// //   @Mutation(InventoryMutations.setInventory) setInventory!: (payload: InventoryItem) => void
+// //   @Action(InventoryActions.updateInventoryList) updateInventoryList!: () => void
+
+// //   mounted () {
+// //     this.updateInventoryList()
+// //   }
+
+// //   home = home
+// // }
+// </script>
