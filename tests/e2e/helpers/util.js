@@ -1,4 +1,3 @@
-import components from '@/common'
-export default {
+import { tags } from '../../../src/common/data-cy'
 
-}
+export default tags
